@@ -1,0 +1,10 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic"
+    ,
+    "java.project.sourcePaths": [
+        "a/home/deekshith/Documents/Project/samples/java_call/android/app/src"
+    ],
+    "java.project.referencedLibraries": [
+        "/home/deekshith/Documents/Project/samples/java_call/android/gradle/wrapper/gradle-wrapper.jar"
+    ]
+}

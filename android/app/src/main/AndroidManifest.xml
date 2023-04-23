@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.java_call">
+     <uses-permission android:name="com.termux.permission.RUN_COMMAND" />
+      <uses-permission android:name="android.permission.INTERNET"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
      <queries>
         <package android:name="com.termux" />
    </queries>
@@ -33,5 +38,12 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+            <service 
+            android:name=".PluginResultsService" />
+            <service
+    android:name=".ExampleIntentService"
+    android:exported="false" />
     </application>
+   
+
 </manifest>
