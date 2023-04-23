@@ -5,9 +5,6 @@ import 'dart:io';
 
 void main() {
   runApp(const MyApp());
-  Directory workDir = Directory('/data/data');
-   Directory.current = workDir;
-
 }
 
 final networkInfo = NetworkInfo();

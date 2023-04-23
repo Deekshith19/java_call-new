@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void functions() async{
-   //await hey();
+   await hey();
    Directory directory = await getApplicationDocumentsDirectory();
    print(directory.path);
    
