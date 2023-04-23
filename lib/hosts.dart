@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
    Future<List<String>> createCVEArrayFromXML() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    File file = File('${directory.path}/third.xml');
+    final File file = File('/storage/emulated/0/Termux/third.xml');
     String xmlString = await file.readAsString(); 
     xml.XmlDocument doc = xml.XmlDocument.parse(xmlString);
 
@@ -59,13 +59,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return cve_ids ; 
   }
+Future<void> requestPermissions() async {
+  Map<Permission, PermissionStatus> statuses = await [
+    Permission.storage,
+  ].request();
 
+  // Check if permission was granted
+  if (statuses[Permission.storage] != PermissionStatus.granted) {
+    // Permission not granted, handle accordingly
+  }
+}
+Future<void> requestStoragePermission() async {
+  final PermissionStatus status = await Permission.manageExternalStorage.request();
+  if (status != PermissionStatus.granted) {
+    // Handle permission denied case
+  }
+}
   void functions() async{
-   await hey();
-   Directory directory = await getApplicationDocumentsDirectory();
-   print(directory.path);
+    requestPermissions();
+    requestStoragePermission();
+  await hey();
+
+  //  print('Starting process');
+  // await  Future.delayed(Duration(seconds: 120), () {
+  //   print('Delayed process completed');
+  // });
    
-    //var result=await createCVEArrayFromXML();
+    // var result=await createCVEArrayFromXML();
+    // print("\n Below is CVE id's:");
+    // print(result);
   }
   @override
   Widget build(BuildContext context) {

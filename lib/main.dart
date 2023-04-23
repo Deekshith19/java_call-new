@@ -5,6 +5,7 @@ import 'dart:io';
 
 void main() {
   runApp(const MyApp());
+  Directory.current = '/storage/emulated/0/Termux';
 }
 
 final networkInfo = NetworkInfo();
