@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:xml/xml.dart' as xml;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:java_call/api.dart';
 
 
 class Connected_host extends StatelessWidget {
@@ -43,22 +44,22 @@ class _MyHomePageState extends State<MyHomePage> {
     
   }
 
-   Future<List<String>> createCVEArrayFromXML() async {
-    Directory directory = await getApplicationDocumentsDirectory();
-    final File file = File('/storage/emulated/0/Termux/third.xml');
-    String xmlString = await file.readAsString(); 
-    xml.XmlDocument doc = xml.XmlDocument.parse(xmlString);
+  //  Future<List<String>> createCVEArrayFromXML() async {
+  //   Directory directory = await getApplicationDocumentsDirectory();
+  //   final File file = File('/storage/emulated/0/Termux/third.xml');
+  //   String xmlString = await file.readAsString(); 
+  //   xml.XmlDocument doc = xml.XmlDocument.parse(xmlString);
 
-    List<xml.XmlNode> nodes = doc.findAllElements('elem').toList();
-    for (var node in nodes) {
-      String? key = node.getAttribute('key');
-      if (key == 'id') {
-        cve_ids.add(node.text);
-      }
-    }
+  //   List<xml.XmlNode> nodes = doc.findAllElements('elem').toList();
+  //   for (var node in nodes) {
+  //     String? key = node.getAttribute('key');
+  //     if (key == 'id') {
+  //       cve_ids.add(node.text);
+  //     }
+  //   }
 
-    return cve_ids ; 
-  }
+  //   return cve_ids ; 
+  // }
 Future<void> requestPermissions() async {
   Map<Permission, PermissionStatus> statuses = await [
     Permission.storage,
@@ -120,7 +121,29 @@ Future<void> requestStoragePermission() async {
                 },
                 child: const Text('Scan'),
               ),ElevatedButton(onPressed: functions,
-              child: const Text("Vuln Scan"),),
+              child: const Text("Vuln Scan"),
+              ),
+                  ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF00ff00), // Change the background color of the button
+                  textStyle: TextStyle(
+                    fontFamily: "Neon",
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text("Login"),
+                onPressed: () {
+                
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Api()),
+                    );
+                  }
+                
+              ),
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,

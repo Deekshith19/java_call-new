@@ -41,6 +41,7 @@ dependencies:
   lan_scanner: ^3.5.0
   wifi_scan: ^0.4.0+1
   permission_handler: ^10.2.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

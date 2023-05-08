@@ -40,7 +40,7 @@ Intent intent = new Intent();
 intent.setClassName(TermuxConstants.TERMUX_PACKAGE_NAME, TermuxConstants.TERMUX_APP.RUN_COMMAND_SERVICE_NAME);
 intent.setAction(RUN_COMMAND_SERVICE.ACTION_RUN_COMMAND);
 intent.putExtra(RUN_COMMAND_SERVICE.EXTRA_COMMAND_PATH, "/data/data/com.termux/files/usr/bin/nmap");
-intent.putExtra(RUN_COMMAND_SERVICE.EXTRA_ARGUMENTS, new String[]{"-oX","third.xml","-sV", "--script", "vuln", "192.168.1.0/24"});
+intent.putExtra(RUN_COMMAND_SERVICE.EXTRA_ARGUMENTS, new String[]{"-oX","scan.xml","-sV", "--script", "vuln", "192.168.1.0/24"});
 intent.putExtra(RUN_COMMAND_SERVICE.EXTRA_WORKDIR, "/storage/emulated/0/Termux");
 intent.putExtra(RUN_COMMAND_SERVICE.EXTRA_BACKGROUND, true);
 intent.putExtra(RUN_COMMAND_SERVICE.EXTRA_SESSION_ACTION, "0");
